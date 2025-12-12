@@ -1,5 +1,4 @@
 #include "revision.h"
-
 #include <stdio.h>
 #include <stdlib.h>
 

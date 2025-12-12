@@ -41,5 +41,6 @@ int main() {
         printf("\nArbre parfait \n");
     }
     else printf("\nArbre imparfait\n");
+    Parcours_Larg(tree);
     return 0;
 }

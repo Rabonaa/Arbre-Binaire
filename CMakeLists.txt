@@ -8,4 +8,5 @@ include_directories(.)
 add_executable(Rev_tree
         revision.c
         revision.h
-        main.c)
+        main.c
+)

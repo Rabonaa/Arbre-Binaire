@@ -193,3 +193,69 @@ int IsPerfectTree(p_node root) {
     return 0;
 }
 
+int IsEmptyQueue(t_queue list) {
+    if (!list.head) {
+        return 1;
+    }
+    return 0;
+}
+
+c_queue* CreateCqueue() {
+    c_queue *cell = malloc(sizeof(c_queue));
+    cell->node = NULL;
+    cell->next = NULL;
+    return cell;
+}
+
+t_queue EmptyQueue() {
+    t_queue list;
+    list.head = NULL;
+    list.tail = NULL;
+    return list;
+}
+
+void Enqueue(t_queue *list, p_node node){
+    c_queue *new_cell = CreateCqueue();
+    new_cell->node = node;
+    if (list->head == NULL) {
+        list->head = new_cell;
+        list->tail = list->head;
+    }
+    else {
+        list->tail->next = new_cell;
+        list->tail = new_cell;
+    }
+}
+
+p_node Dequeue(t_queue *list) {
+    if (list->head == NULL) {
+        return NULL;
+    }
+    p_node node = list->head->node;
+    c_queue *curr = list->head;
+    list->head = curr->next;
+    free(curr);
+    if (list->head == NULL){
+        list->tail = NULL;
+    }
+    return node;
+}
+
+void Parcours_Larg(t_tree tree) {
+    if (tree.root == NULL) {
+        return;
+    }
+    p_node node = tree.root;
+    t_queue list = EmptyQueue();
+    Enqueue(&list, node);
+    while (!IsEmptyQueue(list)) {
+        node = Dequeue(&list);
+        printf(" %d ", node->value);
+        if (node->left){
+            Enqueue(&list, node->left);
+        }
+        if (node->right) {
+            Enqueue(&list, node->right);
+        }
+    }
+}

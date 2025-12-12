@@ -1,11 +1,6 @@
 #ifndef REV_TREE_REVISION_H
 #define REV_TREE_REVISION_H
 #define T int
-#define SPACE "     "
-#define V_LINE "│"
-#define H_LINE "───"
-#define CORNER_R "┌"
-#define CORNER_L "└"
 
 typedef struct node {
     T value;

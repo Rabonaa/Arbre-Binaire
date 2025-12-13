@@ -6,6 +6,8 @@ typedef struct node {
     T value;
     struct node *left;
     struct node *right;
+    int height;
+    int BF;
 }t_node, *p_node;
 
 typedef struct tree {
@@ -46,5 +48,10 @@ t_queue EmptyQueue();
 void Enqueue(t_queue *, p_node);
 p_node Dequeue(t_queue *);
 void Parcours_Larg(t_tree );
+
+void RemoveNode(t_tree *, T);
+p_node SearchValue(t_tree, T);
+p_node RightRotation(p_node);
+p_node LeftRotation(p_node);
 
 #endif

@@ -14,7 +14,11 @@ int main() {
     AddNode(&tree, 3);
     AddNode(&tree, 15);
     AddNode(&tree, 24);
-    AddNode(&tree, 13);
+    AddNode(&tree, 23);
+    AddNode(&tree, 32);
+    AddNode(&tree, 7);
+    AddNode(&tree, 10);
+    AddNode(&tree, 14);
 
 
     displayTree(tree.root);
@@ -42,5 +46,11 @@ int main() {
     }
     else printf("\nArbre imparfait\n");
     Parcours_Larg(tree);
+
+    p_node node = SearchValue(tree, 24);
+    //displayTree(node);
+    displayTree(tree.root);
+    tree.root = LeftRotation(tree.root);
+    displayTree(tree.root);
     return 0;
 }

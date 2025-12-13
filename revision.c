@@ -105,6 +105,42 @@ void AddNode(t_tree* tree, T val) {
     }
 }
 
+/*void RemoveNode(t_tree *tree, T val) {
+    if (tree->root == NULL) {
+        return;
+    }
+    if (val == tree->root->value) {
+        p_node left = tree->root->left;
+        p_node right = tree->root->right;
+        left->right = right;
+        free(tree->root);
+        tree->root = left;
+    }
+    p_node curr = tree->root;
+    p_node father = NULL;
+    while (curr) {
+        father = curr;
+        if (val < curr->value) {
+            curr = curr->left;
+        }
+        else if (val > curr->value) {
+            curr = curr->right;
+        }
+        if (val == curr->value) {
+            if (father->value < curr->value) {
+                father->left = curr->left;
+                curr->left->right = curr->right;
+            }
+            else {
+                father->right = curr->left;
+                curr->left->right = curr->right;
+            }
+        }
+    }
+}*/
+
+
+
 int max(int a, int b) {
     if (a > b) return a;
     else return b;
@@ -140,6 +176,7 @@ void Parcours_prof(p_node root) {
     Parcours_prof(left);
     printf(" %d ", root->value);
     Parcours_prof(right);
+
 }
 
 int IsStrictTree(p_node root) {
@@ -259,3 +296,43 @@ void Parcours_Larg(t_tree tree) {
         }
     }
 }
+
+p_node SearchValue(t_tree tree, T val) {
+    if (tree.root == NULL) {
+        return NULL;
+    }
+    p_node curr = tree.root;
+    while (curr) {
+        if (val == curr->value) {
+            return curr;
+        }
+        if (val < curr->value) {
+            curr = curr->left;
+        }
+        else{
+            curr = curr->right;
+        }
+    }
+    return NULL;
+}
+
+p_node RightRotation(p_node root) {
+    if (root == NULL) {
+        return NULL;
+    }
+    p_node pivot = root->left;
+    root->left = pivot->right;
+    pivot->right = root;
+    return pivot;
+}
+
+p_node LeftRotation(p_node root) {
+    if (root == NULL) {
+        return NULL;
+    }
+    p_node pivot = root->right;
+    root->right = pivot->left;
+    pivot->left = root;
+    return pivot;
+}
+
